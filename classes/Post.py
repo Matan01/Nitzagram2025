@@ -17,9 +17,6 @@ class Post:
 
         #TODO: write me!
         pass
-    def add_commet(self, text):
-        comment = text
-        self.comments.append(comment)
 
     def display(self):
         """
