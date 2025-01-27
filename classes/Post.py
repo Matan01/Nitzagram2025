@@ -18,9 +18,6 @@ class Post:
         #TODO: write me!
         pass
     
-    def add_comment(self, text):
-        comment = text
-        self.comments.append(comment)
     
     def add_like(self):
         self.linkes_counter += 1
