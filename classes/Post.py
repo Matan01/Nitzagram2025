@@ -17,6 +17,11 @@ class Post:
 
         #TODO: write me!
         pass
+    
+    
+    def add_like(self):
+        self.linkes_counter += 1
+
 
     def display(self):
         """
