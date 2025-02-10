@@ -16,8 +16,6 @@ class Post:
         self.comments = []
         self.comments_display_index = 0
 
-        #TODO: write me!
-        pass
     
     
     def add_like(self):
@@ -32,6 +30,8 @@ class Post:
     def reset_comments_display_index(self):
         self.comments_display_index = 0
 
+
+    
     def display(self):
         """
         Display the Post image/Text, description, location, likes and comments
@@ -39,12 +39,21 @@ class Post:
 
         :return: None
         """
-        self.display_content()
-        self.display_header()
-        self.display_likes()
+        font = pygame.font.SysFont( (chalkduster.ttf), UI_FONT_SIZE)
+
+        username = font.render(self.username, True, BLACK)
+        screen.blit(username, [USER_NAME_X_POS,USER_NAME_Y_POS])
+        
+        location = font.render(self.location, True, WHITE)
+        screen.blit(location, [LOCATION_TEXT_X_POS,LOCATION_TEXT_Y_POS])
+
+        likes_counter  = font.render(str(Self.likes_counter), True, BLACK)
+        screen.blit(likes_counter, [LIKE_TEXT_X_POS,LIKE_TEXT_Y_POS])
+
+
         self.display_comments()
-       
          
+
     def display_comments(self):
         """
         Display comments on post. In case there are more than 4
@@ -70,6 +79,4 @@ class Post:
             position_index += 1
             if i >= NUM_OF_COMMENTS_TO_DISPLAY - 1:
                 break
-
-
 
