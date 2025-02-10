@@ -14,6 +14,7 @@ class Post:
         self.description = description
         self.linkes_counter = 0
         self.comments = []
+        self.comments_display_index = 0
 
         #TODO: write me!
         pass
@@ -28,6 +29,9 @@ class Post:
         self.comments.append(comment)
 
 
+    def reset_comments_display_index(self):
+        self.comments_display_index = 0
+
     def display(self):
         """
         Display the Post image/Text, description, location, likes and comments
@@ -35,11 +39,12 @@ class Post:
 
         :return: None
         """
-
-        # TODO: write me!
-        pass
-
-
+        self.display_content()
+        self.display_header()
+        self.display_likes()
+        self.display_comments()
+       
+         
     def display_comments(self):
         """
         Display comments on post. In case there are more than 4
