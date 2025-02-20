@@ -1,6 +1,6 @@
 import pygame
 
-from Post import Post
+from classes.Post import Post
 from constants import *
 from helpers import screen
 

@@ -5,7 +5,6 @@ class Button:
     def __init__(self, x_pos, y_pos, width, height):
         """
         Constructor
-
         :param x_pos: int
             Position of the top left corner of the button in X axis
         :param y_pos: int
@@ -19,3 +18,8 @@ class Button:
         self.y_pos = y_pos
         self.width = width
         self.height = height
+
+
+    def mouse_in_button(self, mouse_x, mouse_y):
+        return (self.x_pos <= mouse_x <= self.x_pos + self.width and
+                self.y_pos <= mouse_y <= self.y_pos + self.height)

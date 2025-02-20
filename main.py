@@ -1,7 +1,9 @@
 import pygame
-from helpers import screen
+from helpers import * 
+from buttons import *
 from constants import WINDOW_WIDTH, WINDOW_HEIGHT, BLACK
-
+from classes.image_post import * 
+from classes.TextPost import *
 
 def main():
     # Set up the game display, clock and headline
@@ -17,6 +19,17 @@ def main():
     background = pygame.transform.scale(background,
                                         (WINDOW_WIDTH, WINDOW_HEIGHT))
 
+    noa_kirel = ImagePost("yosi", "Israel", "Noa kirel",'Images/noa_kirel.jpg')
+    ronaldo = ImagePost("Ori", "New york", "Ronaldo", 'Images/ronaldo.jpg')
+
+    text_post = TextPost("Moshe", "Tel aviv", "Show",'Hello World', (235, 52, 232),(28, 19,28))
+
+    posts = [noa_kirel, ronaldo, text_post]
+
+    current_index = 0
+    current_post = posts[current_index]
+
+    
     # TODO: add a post here
 
     running = True
@@ -24,8 +37,29 @@ def main():
         # Grabs events such as key pressed, mouse pressed and so.
         # Going through all the events that happened in the last clock tick
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
+                if event.type == pygame.QUIT:
+                    running = False
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    pos = pygame.mouse.get_pos()
+                    if mouse_in_button(like_button, pos):
+                        current_post.add_like()
+                        pass
+                    elif mouse_in_button(comment_button, pos):
+                        comment = read_comment_from_user()
+                        current_post.add_comment(comment)
+                        pass
+                    elif mouse_in_button(click_post_button, pos):
+                        current_index = (current_index + 1) % len(posts)
+                        current_post = posts[current_index ]
+                        current_post.reset.comment_display.index()
+
+                    elif mouse_in_button(view_more_comments_button, pos):
+                        current_post.view_more_comments()
+
+                    
+                    # If the mouse is pressed within the button, then run the function
+                    
+        
 
         # Display the background, presented Image, likes, comments, tags and location(on the Image)
         screen.fill(BLACK)
@@ -39,5 +73,5 @@ def main():
     pygame.quit()
     quit()
 
-
+    
 main()

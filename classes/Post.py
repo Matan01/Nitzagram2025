@@ -8,18 +8,18 @@ class Post:
     """
     A class used to represent post on Nitzagram
     """
-    def __init__(self,username, location, description): #TODO: add parameters
+    def __init__(self,username, location, description):
         self.username = username
         self.location = location
         self.description = description
-        self.linkes_counter = 0
+        self.likes_counter = 0
         self.comments = []
         self.comments_display_index = 0
 
     
     
     def add_like(self):
-        self.linkes_counter += 1
+        self.likes_counter += 1
 
     
     def add_comment(self, text):
@@ -39,7 +39,7 @@ class Post:
 
         :return: None
         """
-        font = pygame.font.SysFont( (chalkduster.ttf), UI_FONT_SIZE)
+        font = pygame.font.SysFont( ('chalkduster.ttf'), UI_FONT_SIZE)
 
         username = font.render(self.username, True, BLACK)
         screen.blit(username, [USER_NAME_X_POS,USER_NAME_Y_POS])
@@ -47,10 +47,11 @@ class Post:
         location = font.render(self.location, True, WHITE)
         screen.blit(location, [LOCATION_TEXT_X_POS,LOCATION_TEXT_Y_POS])
 
-        likes_counter  = font.render(str(Self.likes_counter), True, BLACK)
+        likes_counter  = font.render(str(self.likes_counter), True, BLACK)
         screen.blit(likes_counter, [LIKE_TEXT_X_POS,LIKE_TEXT_Y_POS])
 
-
+        description = font.render(self.description, True, BLACK)
+        screen.blit(description, [DESCRIPTION_TEXT_X_POS,DESCRIPTION_TEXT_Y_POS])
         self.display_comments()
          
 
@@ -79,4 +80,3 @@ class Post:
             position_index += 1
             if i >= NUM_OF_COMMENTS_TO_DISPLAY - 1:
                 break
-
