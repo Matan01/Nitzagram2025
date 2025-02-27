@@ -1,4 +1,5 @@
 import pygame
+from classes.Comment import Comment
 
 from constants import *
 from helpers import screen
@@ -16,14 +17,16 @@ class Post:
         self.comments = []
         self.comments_display_index = 0
 
-    
-    
+    def view_more_comments(self):
+        self.comments_display_index += NUM_OF_COMMENTS_TO_DISPLAY
+        self.comments_display_index %= len(self.comments)
+
     def add_like(self):
         self.likes_counter += 1
 
     
     def add_comment(self, text):
-        comment = text
+        comment = Comment(text)
         self.comments.append(comment)
 
 

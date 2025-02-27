@@ -3,11 +3,10 @@ import pygame
 from helpers import screen
 
 class Comment:
-    def _init_(self, text, index):
+    def __init__(self, text):
         self.text = text
-        self.index = index
 
     def display(self, position):
         font = pygame.font.SysFont('chalkduster.ttf', COMMENT_TEXT_SIZE)
         comment_surface = font.render(self.text, True, (0, 0, 0))
-        screen.blit(comment_surface, (50, 100 + position * 30))
+        screen.blit(comment_surface, (FIRST_COMMENT_X_POS, FIRST_COMMENT_Y_POS + COMMENT_LINE_HEIGHT * position))

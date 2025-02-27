@@ -22,7 +22,7 @@ def main():
     noa_kirel = ImagePost("yosi", "Israel", "Noa kirel",'Images/noa_kirel.jpg')
     ronaldo = ImagePost("Ori", "New york", "Ronaldo", 'Images/ronaldo.jpg')
 
-    text_post = TextPost("Moshe", "Tel aviv", "Show",'Hello World', (235, 52, 232),(28, 19,28))
+    text_post = TextPost("Moshe", "Tel aviv", "Show",'Hello World my name is matan i live in ashdod', (235, 52, 232),(28, 19,28))
 
     posts = [noa_kirel, ronaldo, text_post]
 
@@ -51,7 +51,8 @@ def main():
                     elif mouse_in_button(click_post_button, pos):
                         current_index = (current_index + 1) % len(posts)
                         current_post = posts[current_index ]
-                        current_post.reset.comment_display.index()
+                        current_post.reset_comments_display_index()
+                        
 
                     elif mouse_in_button(view_more_comments_button, pos):
                         current_post.view_more_comments()
@@ -64,6 +65,7 @@ def main():
         # Display the background, presented Image, likes, comments, tags and location(on the Image)
         screen.fill(BLACK)
         screen.blit(background, (0, 0))
+        current_post.display()
 
         # Update display - without input update everything
         pygame.display.update()
